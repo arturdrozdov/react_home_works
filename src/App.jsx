@@ -96,17 +96,21 @@ const Step1=({dispatch, values})=>{
     </div>
   )
 }
-const Step2=()=>{
+const Step2=({dispatch, values})=>{
+  const handleChange=e=>{
+    const {name, value}=e.target;
+    dispatch({type: 'CHANGE_ST2', payload:{[name] : value}})
+  }
   return(
     <div className='inner inner2'>
       <label>City
-        <input type="text" name='city' />
+        <input value={values.city} type="text" name='city' onChange={handleChange}/>
       </label>
       <label>Street
-      <input type="text" name='street' />
+      <input value={values.street} type="text" name='street' onChange={handleChange}/>
       </label>
       <label>House number
-      <input type="text" name='houseNumber' />
+      <input value={values.houseNumber} type="text" name='houseNumber' onChange={handleChange}/>
       </label>
     </div>
   )
@@ -156,7 +160,7 @@ function App() {
       <h3>Шаг: {state.step}</h3>
       <div className='main_section'>
         {state.step===1 && <Step1 dispatch={dispatch} values={state.firstStep}/>}
-        {state.step===2 && <Step2/>}
+        {state.step===2 && <Step2 dispatch={dispatch} values={state.secondStep}/>}
         {state.step===3 && <Step3/>}
         {state.step===4 && <Step4/>}
         {state.step===5 && <Step5/>}

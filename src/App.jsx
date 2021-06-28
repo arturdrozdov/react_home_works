@@ -74,7 +74,7 @@ const reducer = (state, action) => {
     case 'CHANGE_ST5':
       return {
         ...state,
-        step: state.step - 1
+        foursStep: { ...state.fifthStep, ...action.payload }
       }
       break;
 
@@ -179,16 +179,16 @@ const Step4 = ({ dispatch, values }) => {
     </div>
   )
 }
-const Step5 = () => {
+const Step5 = ({values}) => {
   return (
     <div className='inner inner5'>
-      <img src="" alt="" />
-      <p>Name</p>
-      <p>Surname</p>
-      <p>Email</p>
-      <p>City</p>
-      <p>Street</p>
-      <p>House number</p>
+      <img src={values.thirdStep.img} alt="" />
+      <p>Name:{values.firstStep.name}</p>
+      <p>Surname:{values.firstStep.surname}</p>
+      <p>Email:{values.firstStep.email}</p>
+      <p>City:{values.secondStep.city}</p>
+      <p>Street:{values.secondStep.street}</p>
+      <p>House:{values.secondStep.houseNumber}</p>
     </div>
   )
 }
@@ -218,12 +218,12 @@ function App() {
         {state.step === 2 && <Step2 dispatch={dispatch} values={state.secondStep} />}
         {state.step === 3 && <Step3 dispatch={dispatch} values={state.thirdStep.img} />}
         {state.step === 4 && <Step4 dispatch={dispatch} values={state.foursStep} />}
-        {state.step === 5 && <Step5 />}
+        {state.step === 5 && <Step5 values={state}/>}
       </div>
       <div className='bot_section'>
         {state.step > 1 && <button onClick={handlePrevStep}>Prev</button>}
         {state.step < 4 && <button onClick={handleNextStep}>Next</button>}
-        {state.step === 4 && <button disabled={isPassword} onClick={handleSubmit}>Submit</button>}
+        {state.step === 4 && <button disabled={isPassword} onClick={handleNextStep}>Submit</button>}
 
       </div>
     </div>

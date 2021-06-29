@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
     <Users/>
-    <div>
+    <div className='regContainer'>
       <NewPlayer/>
     </div>
     </div>

@@ -8,8 +8,12 @@
   padding: 15px;
 }
 
+.regContainer{
+  width: 30%;
+}
+
 .usersContainer{
-  max-width: 70%;
+  width: 70%;
   height: calc(100vh - 30px);
   border: 1px solid black;
   overflow: auto;
@@ -37,7 +41,7 @@
 .registratoin__wrap{
   width: 100%;
   padding: 15px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   text-align: center;
 }
 
@@ -50,6 +54,8 @@ input{
 }
 
 .newPlayer{
+  text-align: center;
+  width: 100%;
   border: 1px solid black;
   padding: 15px;
 }
